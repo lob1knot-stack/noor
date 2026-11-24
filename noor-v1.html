@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Marcellus&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F7F3EA;color:#2B3836;font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+::selection{background:#17302F;color:#EDE5D6}
+a{color:#17302F;text-underline-offset:4px}
+a:hover{color:#8A6428}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #B9893F;outline-offset:3px}
+input,select{font:inherit}
+@keyframes noorReel{0%{opacity:0;transform:scale(1.02)}7%{opacity:1}33%{opacity:1}40%{opacity:0;transform:scale(1.11)}100%{opacity:0;transform:scale(1.11)}}
+@media (prefers-reduced-motion: reduce){.noor-reel{animation:none!important;opacity:0!important}.noor-reel:first-child{opacity:1!important}}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column">
+
+  <section data-screen-label="01 Hero" style="position:relative;min-height:100dvh;display:flex;flex-direction:column;justify-content:space-between;padding:20px;box-sizing:border-box;overflow:hidden;background:#D9D0BE url('assets/photos/IMG_4110.jpg') center 38% / cover no-repeat">
+    {{ heroReel }}
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(23,48,47,0.28),rgba(23,48,47,0) 45%);pointer-events:none"></div>
+    <nav style="position:relative;align-self:center;display:flex;align-items:center;gap:28px;padding:8px 8px 8px 18px;border-radius:50px;background:rgba(247,243,234,0.62);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 2px 6px rgba(23,48,47,0.14),inset 0 0 0 1px rgba(23,48,47,0.12);max-width:100%;box-sizing:border-box;flex-wrap:wrap;justify-content:center">
+      <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+        <svg width="26" height="26" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#17302F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#17302F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="7" fill="none" stroke="#17302F" stroke-width="1.4"></circle><circle cx="20" cy="20" r="3.8" fill="#B9893F"></circle></svg>
+        <span style="font-family:'Marcellus',serif;font-size:20px;letter-spacing:0.12em;color:#17302F">NOOR</span>
+      </a>
+      <div style="display:flex;gap:22px;font-size:15px;font-weight:500">
+        <a href="#rooms" style="text-decoration:none">Номера</a>
+        <a href="#details" style="text-decoration:none">В номере</a>
+        <a href="#book" style="text-decoration:none">Контакты</a>
+      </div>
+      <a href="#book" style="padding:9px 16px;border-radius:40px;background:#17302F;color:#EDE5D6;font-size:15px;font-weight:500;text-decoration:none;transition:transform 160ms cubic-bezier(0.23,1,0.32,1),background-color 160ms ease" style-hover="background:#234544;color:#EDE5D6" style-active="transform:scale(0.97)">Забронировать</a>
+    </nav>
+    <div style="position:relative;align-self:flex-start;max-width:560px;width:100%;box-sizing:border-box;padding:clamp(24px,3.5vw,40px);border-radius:24px;background:rgba(247,243,234,0.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.5);display:flex;flex-direction:column;gap:20px">
+      <h1 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(40px,5.2vw,68px);line-height:1.04;letter-spacing:-0.01em;color:#17302F;text-wrap:balance">Свет, который встречает у двери</h1>
+      <p style="margin:0;font-size:17px;line-height:1.55;color:#2B3836;max-width:40ch;text-wrap:pretty">Апарт-отель NOOR: тихие номера для двоих с хрусталём над кроватью и мрамором в ванной.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#book" style="padding:13px 22px;border-radius:8px;background:#17302F;color:#EDE5D6;font-size:15px;font-weight:600;text-decoration:none;transition:transform 160ms cubic-bezier(0.23,1,0.32,1),background-color 160ms ease" style-hover="background:#234544;color:#EDE5D6" style-active="transform:scale(0.97)">Забронировать</a>
+        <a href="#rooms" style="padding:13px 20px;border-radius:8px;box-shadow:inset 0 0 0 1px #B9893F;color:#17302F;font-size:15px;font-weight:500;text-decoration:none;transition:transform 160ms cubic-bezier(0.23,1,0.32,1),background-color 160ms ease" style-hover="background:rgba(185,137,63,0.12);color:#17302F" style-active="transform:scale(0.97)">Посмотреть номера</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:112px 32px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:56px 72px;align-items:end">
+    <p style="margin:0;font-family:'Forum',serif;font-size:clamp(28px,3.2vw,42px);line-height:1.22;color:#17302F;text-wrap:pretty">Noor означает «свет». В каждом номере он устроен одинаково: хрустальная люстра, золотые линии на стенах и плотные шторы, когда хочется выспаться.</p>
+    <img src="assets/photos/IMG_4096.jpg" alt="Двуспальная кровать у мягкого изголовья с золотыми профилями" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;display:block;max-height:560px">
+  </section>
+
+  <section id="rooms" data-screen-label="02 Rooms" style="background:#FFFFFF;border-top:1px solid #E2DACB;border-bottom:1px solid #E2DACB">
+    <div style="max-width:1200px;margin:0 auto;padding:96px 32px;box-sizing:border-box;display:flex;flex-direction:column;gap:40px">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px">
+        <h2 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(36px,4vw,52px);line-height:1.08;color:#17302F">Два типа номеров</h2>
+        <div role="tablist" style="display:flex;padding:4px;border-radius:10px;background:#F2ECE0;gap:4px">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="2">
+            <button role="tab" aria-selected="{{ t.on }}" onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px 56px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#EDE5D6">
+            <sc-for list="{{ allPhotos }}" as="p" hint-placeholder-count="1">
+              <img src="{{ p.src }}" alt="{{ p.alt }}" style="{{ p.style }}">
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+            <sc-for list="{{ thumbs }}" as="th" hint-placeholder-count="4">
+              <button onClick="{{ th.pick }}" aria-label="{{ th.alt }}" style="{{ th.style }}"><img src="{{ th.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:24px;padding-top:8px">
+          <h3 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:34px;line-height:1.1;color:#17302F">{{ room.name }}</h3>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:#2B3836;max-width:44ch">{{ room.text }}</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 24px;padding-top:24px;border-top:1px solid #E2DACB">
+            <sc-for list="{{ room.facts }}" as="f" hint-placeholder-count="4">
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <span style="font-size:13px;color:#5C6663">{{ f.k }}</span>
+                <span style="font-size:16px;font-weight:500;color:#17302F">{{ f.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <a href="#book" onClick="{{ room.book }}" style="align-self:flex-start;padding:13px 22px;border-radius:8px;background:#17302F;color:#EDE5D6;font-size:15px;font-weight:600;text-decoration:none;transition:transform 160ms cubic-bezier(0.23,1,0.32,1),background-color 160ms ease" style-hover="background:#234544;color:#EDE5D6" style-active="transform:scale(0.97)">Забронировать</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="details" data-screen-label="03 Details" style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:112px 32px 96px;display:flex;flex-direction:column;gap:40px">
+    <h2 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(36px,4vw,52px);line-height:1.08;color:#17302F;max-width:16ch">Всё нужное на одну ночь или на неделю</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:32px 24px">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <img src="assets/photos/IMG_4097.jpg" alt="Ванная с серым мрамором и стеклянной душевой" style="width:100%;flex:1;aspect-ratio:3/4;object-fit:cover;border-radius:16px;display:block">
+        <figcaption style="font-size:15px;color:#2B3836">Мраморная ванная со стеклянной душевой</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <img src="assets/photos/IMG_4088.jpg" alt="Шкаф-купе с халатом на вешалке" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;display:block">
+        <figcaption style="font-size:15px;color:#2B3836">Шкаф-купе и халаты</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <img src="assets/photos/IMG_4108.jpg" alt="Мини-холодильник в номере" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;display:block">
+        <figcaption style="font-size:15px;color:#2B3836">Холодильник в каждом номере</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px;grid-column:1 / -1">
+        <img src="assets/photos/IMG_4079.jpg" alt="Номер с двумя кроватями, туалетным столиком и телевизором" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center 60%;border-radius:16px;display:block">
+        <figcaption style="font-size:15px;color:#2B3836">Кондиционер, телевизор и туалетный столик с зеркалом</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section style="padding:0 20px">
+    <div style="max-width:1360px;margin:0 auto;border-radius:24px;overflow:hidden;min-height:min(78vh,760px);display:flex;align-items:flex-end;padding:clamp(24px,5vw,64px);box-sizing:border-box;background:#D9D0BE url('assets/photos/IMG_4085.jpg') center 55% / cover no-repeat">
+      <p style="margin:0;max-width:520px;padding:28px 32px;border-radius:16px;background:rgba(247,243,234,0.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-family:'Forum',serif;font-size:clamp(24px,2.6vw,32px);line-height:1.25;color:#17302F">Тишина начинается у двери: длинная прихожая отделяет спальню от коридора.</p>
+    </div>
+  </section>
+
+  <section id="book" data-screen-label="04 Booking" style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:112px 32px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:56px 80px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <h2 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(36px,4vw,52px);line-height:1.08;color:#17302F">Заявка на бронирование</h2>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#2B3836;max-width:38ch">Оставьте даты и телефон. Администратор перезвонит, подтвердит наличие и назовёт цену.</p>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:24px;border-top:1px solid #E2DACB">
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;color:#5C6663">Телефон</span><a href="tel:" style="font-size:18px;font-weight:500;text-decoration:none">+992 00 000 00 00</a></div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;color:#5C6663">Адрес</span><span style="font-size:18px;font-weight:500;color:#17302F">Улица и дом</span></div>
+      </div>
+    </div>
+
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" novalidate="novalidate" style="display:flex;flex-direction:column;gap:24px;padding:32px;border-radius:16px;background:#FFFFFF;box-shadow:0 0 0 1px #E2DACB,0 4px 12px rgba(23,48,47,0.06)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px">
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:500;color:#17302F">Заезд</span><input type="date" value="{{ f.checkin }}" onChange="{{ on.checkin }}" style="padding:12px 2px 10px;border:none;border-bottom:1px solid #2B3836;background:#F7F3EA;color:#17302F;border-radius:0"></label>
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:500;color:#17302F">Выезд</span><input type="date" value="{{ f.checkout }}" onChange="{{ on.checkout }}" style="padding:12px 2px 10px;border:none;border-bottom:1px solid #2B3836;background:#F7F3EA;color:#17302F;border-radius:0"></label>
+        </div>
+        <sc-if value="{{ err.dates }}" hint-placeholder-val="{{ false }}"><span role="alert" style="margin-top:-14px;font-size:14px;color:#9C2F22">{{ err.dates }}</span></sc-if>
+        <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:500;color:#17302F">Номер</span>
+          <select value="{{ f.room }}" onChange="{{ on.room }}" style="padding:12px 2px 10px;border:none;border-bottom:1px solid #2B3836;background:#F7F3EA;color:#17302F;border-radius:0">
+            <option value="double">С двуспальной кроватью</option>
+            <option value="twin">С двумя кроватями</option>
+          </select>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:500;color:#17302F">Телефон</span><input type="tel" value="{{ f.phone }}" onChange="{{ on.phone }}" placeholder="+992" autocomplete="tel" style="padding:12px 2px 10px;border:none;border-bottom:1px solid #2B3836;background:#F7F3EA;color:#17302F;border-radius:0"></label>
+        <sc-if value="{{ err.phone }}" hint-placeholder-val="{{ false }}"><span role="alert" style="margin-top:-14px;font-size:14px;color:#9C2F22">{{ err.phone }}</span></sc-if>
+        <button type="submit" style="align-self:flex-start;padding:14px 24px;border:none;border-radius:8px;background:#17302F;color:#EDE5D6;font:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:transform 160ms cubic-bezier(0.23,1,0.32,1),background-color 160ms ease" style-hover="background:#234544" style-active="transform:scale(0.97)">Отправить заявку</button>
+      </form>
+    </sc-if>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="display:flex;flex-direction:column;gap:16px;padding:32px;border-radius:16px;background:#FFFFFF;box-shadow:0 0 0 1px #E2DACB,0 4px 12px rgba(23,48,47,0.06)">
+        <h3 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:32px;color:#17302F">Заявка принята</h3>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#2B3836">{{ sentText }}</p>
+        <button onClick="{{ reset }}" style="align-self:flex-start;padding:12px 20px;border:none;border-radius:8px;background:transparent;box-shadow:inset 0 0 0 1px #B9893F;color:#17302F;font:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:transform 160ms cubic-bezier(0.23,1,0.32,1)" style-active="transform:scale(0.97)">Изменить даты</button>
+      </div>
+    </sc-if>
+  </section>
+
+  <footer style="border-top:1px solid #E2DACB;background:#FFFFFF">
+    <div style="max-width:1200px;margin:0 auto;padding:72px 32px 40px;box-sizing:border-box;display:flex;flex-direction:column;gap:56px">
+      <p style="margin:0;font-family:'Forum',serif;font-size:clamp(30px,4vw,52px);line-height:1.1;color:#17302F;max-width:18ch">Свет оставим включённым до вашего приезда.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;font-size:14px;color:#5C6663">
+        <span style="display:flex;align-items:center;gap:10px"><span style="font-family:'Marcellus',serif;font-size:16px;letter-spacing:0.14em;color:#17302F">NOOR</span><span style="letter-spacing:0.16em;font-size:12px">APART HOTEL</span></span>
+        <div style="display:flex;gap:24px"><a href="#rooms" style="color:#5C6663">Номера</a><a href="#book" style="color:#5C6663">Контакты</a></div>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { room: 'double', idx: 0, f: { checkin: '', checkout: '', room: 'double', phone: '' }, err: {}, sent: false };
+  renderVals() {
+    const s = this.state, ease = 'cubic-bezier(0.23,1,0.32,1)';
+    const ROOMS = {
+      double: { label: 'Одна кровать', name: 'Номер с двуспальной кроватью',
+        text: 'Мягкое изголовье во всю стену, золотые профили и люстра из трёх хрустальных колец. Туалетный столик с зеркалом у окна.',
+        photos: [['IMG_4096', 'Двуспальная кровать и стена с мягкими панелями'], ['IMG_4094', 'Номер с туалетным столиком и шторами'], ['IMG_4092', 'Кровать у окна с тюлем'], ['IMG_4091', 'Кровать, кондиционер и дверь на балкон']],
+        facts: [['Гости', 'До 2 человек'], ['Кровать', 'Одна двуспальная'], ['Ванная', 'Душевая кабина'], ['В номере', 'Кондиционер, ТВ, холодильник']] },
+      twin: { label: 'Две кровати', name: 'Номер с двумя кроватями',
+        text: 'Две отдельные кровати у стены с деревянными панелями. Удобно коллегам в командировке, друзьям и родителям с подростком.',
+        photos: [['IMG_4095', 'Две кровати у стены с деревянными панелями'], ['IMG_4082', 'Две кровати и окно со шторами'], ['IMG_4087', 'Номер с двумя кроватями и ковром'], ['IMG_4079', 'Две кровати, телевизор и туалетный столик']],
+        facts: [['Гости', 'До 2 человек'], ['Кровати', 'Две односпальные'], ['Ванная', 'Душевая кабина'], ['В номере', 'Кондиционер, ТВ, холодильник']] }
+    };
+    const r = ROOMS[s.room];
+    const tabs = Object.keys(ROOMS).map(k => {
+      const on = k === s.room;
+      return { label: ROOMS[k].label, on, pick: () => this.setState({ room: k, idx: 0 }),
+        style: { font: 'inherit', fontSize: 14, fontWeight: 500, padding: '10px 16px', border: 'none', borderRadius: 7, whiteSpace: 'nowrap', cursor: 'pointer',
+          background: on ? '#FFFFFF' : 'transparent', color: on ? '#17302F' : '#4A5653',
+          boxShadow: on ? '0 1px 3px rgba(23,48,47,0.12)' : 'none', transition: `background-color 160ms ease, color 160ms ease` } };
+    });
+    const allPhotos = [];
+    Object.keys(ROOMS).forEach(k => ROOMS[k].photos.forEach(([f, alt], i) => {
+      const on = k === s.room && i === s.idx;
+      allPhotos.push({ src: `assets/photos/${f}.jpg`, alt, style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: on ? 1 : 0, transition: `opacity 260ms ${ease}` } });
+    }));
+    const thumbs = r.photos.map(([f, alt], i) => ({ src: `assets/photos/${f}.jpg`, alt, pick: () => this.setState({ idx: i }),
+      style: { padding: 0, border: 'none', cursor: 'pointer', aspectRatio: '1', borderRadius: 8, overflow: 'hidden', background: '#EDE5D6',
+        boxShadow: i === s.idx ? '0 0 0 2px #FFFFFF, 0 0 0 3px #17302F' : 'none', opacity: i === s.idx ? 1 : 0.72, transition: 'opacity 160ms ease, box-shadow 160ms ease' } }));
+    const set = k => e => this.setState({ f: { ...this.state.f, [k]: e.target.value }, err: { ...this.state.err, [k === 'phone' ? 'phone' : 'dates']: '' } });
+    const submit = e => {
+      e.preventDefault();
+      const f = this.state.f, err = {};
+      if (!f.checkin || !f.checkout) err.dates = 'Укажите даты заезда и выезда.';
+      else if (f.checkout <= f.checkin) err.dates = 'Дата выезда должна быть позже даты заезда.';
+      if (f.phone.replace(/\D/g, '').length < 9) err.phone = 'Нужен номер телефона, чтобы администратор мог перезвонить.';
+      this.setState(Object.keys(err).length ? { err } : { err: {}, sent: true });
+    };
+    const fmt = d => d ? d.split('-').reverse().join('.') : '';
+    if (!this._reel) {
+      const shots = [['IMG_4110', 'center 38%'], ['IMG_4085', 'center 55%'], ['IMG_4096', 'center 40%']];
+      this._reel = React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: 0, pointerEvents: 'none' } },
+        shots.map(([f, pos], i) => React.createElement('div', { key: f, className: 'noor-reel', style: {
+          position: 'absolute', inset: 0, background: `url('assets/photos/${f}.jpg') ${pos} / cover no-repeat`,
+          opacity: 0, willChange: 'opacity, transform', animation: `noorReel 21s linear ${i * 7}s infinite` } })));
+    }
+    return {
+      heroReel: this._reel,
+      tabs, allPhotos, thumbs,
+      room: { name: r.name, text: r.text, facts: r.facts.map(([k, v]) => ({ k, v })), book: () => this.setState({ f: { ...this.state.f, room: s.room } }) },
+      f: s.f, err: { dates: s.err.dates || '', phone: s.err.phone || '' },
+      on: { checkin: set('checkin'), checkout: set('checkout'), room: set('room'), phone: set('phone') },
+      submit, sent: s.sent, notSent: !s.sent,
+      sentText: `${s.f.room === 'twin' ? 'Номер с двумя кроватями' : 'Номер с двуспальной кроватью'}, ${fmt(s.f.checkin)} - ${fmt(s.f.checkout)}. Администратор перезвонит на ${s.f.phone} и подтвердит бронь.`,
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
