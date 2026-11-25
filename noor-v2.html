@@ -24,11 +24,12 @@ a:hover{color:#8A6428}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #B9893F;outline-offset:3px}
 input,select{font:inherit}
 @keyframes noorFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width: 719px){[data-foot]{position:relative!important}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition-duration:1ms!important;animation-duration:1ms!important}}
 </style>
 </helmet>
 <div ref="{{ rootRef }}" style="display:flex;flex-direction:column">
-  <a href="#main" style="position:absolute;left:16px;top:-64px;z-index:60;padding:8px 12px;border-radius:8px;background:#17302F;color:#EDE5D6;font-size:14px;font-weight:600;text-decoration:none" style-focus="top:16px">Перейти к содержанию</a>
+  <a href="#main" style="position:absolute;left:16px;top:-64px;z-index:60;padding:8px 12px;border-radius:8px;background:#17302F;color:#EDE5D6;font-size:14px;font-weight:600;text-decoration:none" style-focus="top:16px">{{ t.skip }}</a>
 
   <div data-preloader="1" aria-hidden="true" style="position:fixed;inset:0;z-index:100;background:#17302F;display:grid;place-items:center">
     <div style="display:flex;flex-direction:column;align-items:center;gap:24px">
@@ -38,8 +39,8 @@ input,select{font:inherit}
     </div>
   </div>
 
-  <nav data-nav="1" aria-label="Основная навигация" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:24px;padding:8px 8px 8px 16px;border-radius:999px;background:rgba(247,243,234,0.72);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);box-shadow:0 2px 12px rgba(23,48,47,0.12),inset 0 0 0 1px rgba(23,48,47,0.1);max-width:calc(100% - 32px);box-sizing:border-box">
-    <a href="#top" aria-label="NOOR, наверх" style="display:flex;align-items:center;gap:8px;text-decoration:none">
+  <nav data-nav="1" aria-label="{{ t.navAria }}" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:24px;padding:8px 8px 8px 16px;border-radius:999px;background:rgba(247,243,234,0.72);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);box-shadow:0 2px 12px rgba(23,48,47,0.12),inset 0 0 0 1px rgba(23,48,47,0.1);max-width:calc(100% - 32px);box-sizing:border-box">
+    <a href="#top" aria-label="{{ t.homeAria }}" style="display:flex;align-items:center;gap:8px;text-decoration:none">
       <svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#17302F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#17302F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="7" fill="none" stroke="#17302F" stroke-width="1.4"></circle><circle cx="20" cy="20" r="3.8" fill="#B9893F"></circle></svg>
       <span style="font-family:'Marcellus',serif;font-size:18px;line-height:28px;letter-spacing:0.12em;color:#17302F">NOOR</span>
     </a>
@@ -56,6 +57,7 @@ input,select{font:inherit}
         <span style="{{ burgerBottom }}"></span>
       </button>
     </sc-if>
+    <button onClick="{{ toggleLang }}" aria-label="{{ t.langAria }}" style="flex:none;height:40px;min-width:48px;padding:0 14px;border:none;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(23,48,47,0.22);color:#17302F;font:inherit;font-size:13px;line-height:20px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background-color 300ms cubic-bezier(0.22,1,0.36,1)" style-hover="background:rgba(23,48,47,0.08)">{{ t.langLabel }}</button>
   </nav>
 
   <div aria-hidden="{{ menuHidden }}" style="{{ menuPanel }}">
@@ -72,17 +74,17 @@ input,select{font:inherit}
     <div data-hero-content="1" style="position:relative;height:100%;max-width:1280px;margin:0 auto;padding:96px 24px 48px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;gap:48px">
       <div style="display:flex;flex-direction:column;gap:24px;max-width:680px">
         <span data-intro="1" style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.24em;color:#EDE5D6">NOOR APART HOTEL</span>
-        <h1 data-intro="1" style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(48px,7vw,96px);line-height:1;letter-spacing:-0.01em;text-wrap:balance;background:linear-gradient(90deg,#FFFFFF 0%,#D9CBB0 100%);-webkit-background-clip:text;background-clip:text;color:transparent">Свет, который<br>встречает у двери</h1>
-        <p data-intro="1" style="margin:0;font-size:18px;line-height:28px;color:#F2ECE0;max-width:520px;text-wrap:pretty">Тихие номера для двоих: мраморная ванная, плотные шторы и хрустальный свет над кроватью.</p>
+        <h1 data-intro="1" style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(48px,7vw,96px);line-height:1;letter-spacing:-0.01em;text-wrap:balance;background:linear-gradient(90deg,#FFFFFF 0%,#D9CBB0 100%);-webkit-background-clip:text;background-clip:text;color:transparent">{{ t.h1a }}<br>{{ t.h1b }}</h1>
+        <p data-intro="1" style="margin:0;font-size:18px;line-height:28px;color:#F2ECE0;max-width:520px;text-wrap:pretty">{{ t.heroText }}</p>
         <div data-intro="1" style="display:flex;gap:12px;flex-wrap:wrap">
-          <a href="#rooms" style="padding:12px 24px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(237,229,214,0.6);color:#FFFFFF;font-size:16px;line-height:24px;font-weight:500;text-decoration:none;transition:transform 300ms cubic-bezier(0.22,1,0.36,1),background-color 300ms cubic-bezier(0.22,1,0.36,1)" style-hover="background:rgba(237,229,214,0.14);color:#FFFFFF" style-active="transform:scale(0.98)">Посмотреть номера</a>
+          <a href="#rooms" style="padding:12px 24px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(237,229,214,0.6);color:#FFFFFF;font-size:16px;line-height:24px;font-weight:500;text-decoration:none;transition:transform 300ms cubic-bezier(0.22,1,0.36,1),background-color 300ms cubic-bezier(0.22,1,0.36,1)" style-hover="background:rgba(237,229,214,0.14);color:#FFFFFF" style-active="transform:scale(0.98)">{{ t.heroCta }}</a>
         </div>
       </div>
       <div data-intro="1" style="display:flex;flex-wrap:wrap;gap:12px 32px;padding-top:24px;box-shadow:inset 0 1px 0 rgba(237,229,214,0.3);font-size:14px;line-height:20px;color:#EDE5D6">
-        <span>До 2 гостей в номере</span>
-        <span>Кондиционер и холодильник</span>
-        <span>Мраморная ванная с душевой</span>
-        <span>Прихожая отделяет спальню от двери</span>
+        <span>{{ t.chip1 }}</span>
+        <span>{{ t.chip2 }}</span>
+        <span>{{ t.chip3 }}</span>
+        <span>{{ t.chip4 }}</span>
       </div>
     </div>
   </header>
@@ -91,12 +93,12 @@ input,select{font:inherit}
 
     <section aria-labelledby="why-h" style="max-width:1280px;width:100%;box-sizing:border-box;margin:0 auto;padding:96px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px 80px;align-items:start">
       <div data-reveal="1" style="position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;max-height:720px;background:#EDE5D6">
-        <img src="assets/photos/ai/09.png" alt="Двуспальная кровать у мягкого изголовья с золотыми профилями" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 700ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:scale(1.03)">
+        <img src="assets/photos/ai/09.png" alt="{{ t.whyAlt }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 700ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:scale(1.03)">
       </div>
       <div style="display:flex;flex-direction:column;gap:32px">
         <div data-reveal="1" style="display:flex;flex-direction:column;gap:16px">
-          <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.24em;color:#8A6428">ПОЧЕМУ NOOR</span>
-          <h2 id="why-h" style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);line-height:1.04;color:#17302F;text-wrap:balance">Noor значит «свет». Номера устроены так, чтобы его было много днём и мало ночью.</h2>
+          <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.24em;color:#8A6428">{{ t.whyK }}</span>
+          <h2 id="why-h" style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);line-height:1.04;color:#17302F;text-wrap:balance">{{ t.whyH }}</h2>
         </div>
         <div style="display:flex;flex-direction:column">
           <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="4">
@@ -109,7 +111,7 @@ input,select{font:inherit}
       </div>
     </section>
 
-    <section data-circle="1" aria-label="О ночи в NOOR" style="position:relative;z-index:1;background:#17302F;clip-path:circle(150% at 50% 100%)">
+    <section data-circle="1" aria-label="{{ t.nightAria }}" style="position:relative;z-index:1;background:#17302F;clip-path:circle(150% at 50% 100%)">
       <div style="max-width:1280px;margin:0 auto;padding:128px 24px;box-sizing:border-box;display:flex;flex-direction:column;gap:32px">
         <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="1.6"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="1.6" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="3.8" fill="#B9893F"></circle></svg>
         <p style="margin:0;max-width:960px;font-family:'Forum',serif;font-size:clamp(36px,5vw,60px);line-height:1.12;color:#EDE5D6;display:flex;flex-wrap:wrap;column-gap:0.26em">
@@ -121,8 +123,8 @@ input,select{font:inherit}
     <section id="rooms" data-rise="1" data-screen-label="02 Rooms" aria-labelledby="rooms-h" style="position:relative;z-index:2;margin-top:-64px;border-radius:48px 48px 0 0;background:#FFFFFF;overflow:hidden;transform-origin:50% 0;box-shadow:0 -24px 64px rgba(13,27,26,0.18)">
       <div style="max-width:1280px;margin:0 auto;padding:128px 24px;box-sizing:border-box;display:flex;flex-direction:column;gap:128px">
         <div data-reveal="1" style="display:flex;flex-direction:column;gap:16px;max-width:680px">
-          <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.24em;color:#8A6428">НОМЕРА</span>
-          <h2 id="rooms-h" style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);line-height:1.04;color:#17302F;text-wrap:balance">Два номера, один и тот же свет</h2>
+          <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.24em;color:#8A6428">{{ t.roomsK }}</span>
+          <h2 id="rooms-h" style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);line-height:1.04;color:#17302F;text-wrap:balance">{{ t.roomsH }}</h2>
         </div>
         <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="2">
           <article style="{{ c.wrap }}">
@@ -156,14 +158,14 @@ input,select{font:inherit}
       </div>
     </section>
     <section aria-hidden="true" style="padding:128px 0 32px;overflow:hidden;display:flex;flex-direction:column;gap:16px">
-      <div data-marquee="1" style="display:flex;align-items:center;gap:0.4em;white-space:nowrap;will-change:transform;font-family:'Forum',serif;font-size:clamp(60px,9vw,128px);line-height:1;color:#17302F"><span>Тишина</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Хрусталь</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Мрамор</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Свет</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Лён</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Золото</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Тишина</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Хрусталь</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Мрамор</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Свет</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Лён</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Золото</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Тишина</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Хрусталь</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Мрамор</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Свет</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Лён</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Золото</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg></div>
-      <div data-marquee="-1" style="display:flex;align-items:center;gap:0.4em;white-space:nowrap;will-change:transform;font-family:'Forum',serif;font-size:clamp(60px,9vw,128px);line-height:1;color:transparent;-webkit-text-stroke:1px #B9893F"><span>Тишина</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Хрусталь</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Мрамор</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Свет</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Лён</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Золото</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Тишина</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Хрусталь</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Мрамор</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Свет</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Лён</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Золото</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Тишина</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Хрусталь</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Мрамор</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Свет</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Лён</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>Золото</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg></div>
+      <div data-marquee="1" style="display:flex;align-items:center;gap:0.4em;white-space:nowrap;will-change:transform;font-family:'Forum',serif;font-size:clamp(60px,9vw,128px);line-height:1;color:#17302F"><span>{{ t.mq1 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq2 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq3 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq4 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq5 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq6 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq1 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq2 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq3 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq4 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq5 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq6 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq1 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq2 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq3 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq4 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq5 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq6 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg></div>
+      <div data-marquee="-1" style="display:flex;align-items:center;gap:0.4em;white-space:nowrap;will-change:transform;font-family:'Forum',serif;font-size:clamp(60px,9vw,128px);line-height:1;color:transparent;-webkit-text-stroke:1px #B9893F"><span>{{ t.mq1 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq2 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq3 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq4 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq5 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq6 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq1 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq2 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq3 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq4 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq5 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq6 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq1 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq2 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq3 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq4 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq5 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg><span>{{ t.mq6 }}</span><svg width="0.5em" height="0.5em" viewBox="0 0 40 40" aria-hidden="true" style="flex:none"><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2"></rect><rect x="9" y="9" width="22" height="22" fill="none" stroke="#B9893F" stroke-width="2" transform="rotate(45 20 20)"></rect><circle cx="20" cy="20" r="4" fill="#B9893F"></circle></svg></div>
     </section>
 
     <section id="details" data-screen-label="03 Details" aria-labelledby="details-h" style="max-width:1280px;width:100%;box-sizing:border-box;margin:0 auto;padding:96px 24px;display:flex;flex-direction:column;gap:48px">
       <div data-reveal="1" style="display:flex;flex-direction:column;gap:16px">
-        <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.24em;color:#8A6428">В НОМЕРЕ</span>
-        <h2 id="details-h" style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);line-height:1.04;color:#17302F;max-width:680px;text-wrap:balance">Всё нужное на одну ночь или на неделю</h2>
+        <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.24em;color:#8A6428">{{ t.detailsK }}</span>
+        <h2 id="details-h" style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);line-height:1.04;color:#17302F;max-width:680px;text-wrap:balance">{{ t.detailsH }}</h2>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:32px 24px">
         <sc-for list="{{ details }}" as="d" hint-placeholder-count="4">
@@ -177,21 +179,33 @@ input,select{font:inherit}
       </div>
     </section>
 
-    <section id="hall" aria-label="Прихожая" style="padding:0 0 128px">
+    <section id="hall" aria-label="{{ t.hallAria }}" style="padding:0 0 128px">
       <div data-expand="1" style="position:relative;margin:0 auto;overflow:hidden;min-height:100vh;clip-path:inset(8% 12% round 24px);will-change:clip-path;display:flex;align-items:flex-end;padding:clamp(24px,5vw,64px);box-sizing:border-box;background:#D9D0BE">
-        <img data-hall="1" src="assets/photos/ai/07.png" alt="Длинная прихожая с ковровой дорожкой ведёт в спальню" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;transform:scale(1.12);will-change:transform">
-        <p data-reveal="1" style="position:relative;margin:0;max-width:520px;padding:32px;border-radius:16px;background:rgba(247,243,234,0.84);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);font-family:'Forum',serif;font-size:30px;line-height:36px;color:#17302F;text-wrap:pretty">Тишина начинается у двери: длинная прихожая отделяет спальню от коридора.</p>
+        <img data-hall="1" src="assets/photos/ai/07.png" alt="{{ t.hallAlt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;transform:scale(1.12);will-change:transform">
+        <p data-reveal="1" style="position:relative;margin:0;max-width:520px;padding:32px;border-radius:16px;background:rgba(247,243,234,0.84);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);font-family:'Forum',serif;font-size:30px;line-height:36px;color:#17302F;text-wrap:pretty">{{ t.hallText }}</p>
       </div>
     </section>
 
   </main>
 
-  <footer style="position:sticky;bottom:0;z-index:0;background:#17302F;margin-top:-48px">
+  <footer data-foot="1" style="position:sticky;bottom:0;z-index:0;background:#17302F;margin-top:-48px">
     <div style="max-width:1280px;margin:0 auto;padding:160px 24px 40px;box-sizing:border-box;display:flex;flex-direction:column;gap:64px">
-      <p data-reveal="1" style="margin:0;font-family:'Forum',serif;font-size:clamp(36px,5vw,60px);line-height:1.04;color:#EDE5D6;max-width:680px;text-wrap:balance">Свет оставим включённым до вашего приезда.</p>
+      <p data-reveal="1" style="margin:0;font-family:'Forum',serif;font-size:clamp(36px,5vw,60px);line-height:1.04;color:#EDE5D6;max-width:680px;text-wrap:balance">{{ t.footH }}</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:32px 48px">
+        <div data-reveal="1" style="display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.24em;color:#D9B77A">{{ t.addrK }}</span>
+          <p style="margin:0;font-family:'Forum',serif;font-size:28px;line-height:36px;color:#EDE5D6">{{ t.addr }}</p>
+          <span style="font-size:16px;line-height:24px;color:#AEB9B5">{{ t.landmark }}</span>
+        </div>
+        <div data-reveal="1" data-delay="90" style="display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.24em;color:#D9B77A">{{ t.phoneK }}</span>
+          <a href="tel:+992971101771" style="font-family:'Forum',serif;font-size:28px;line-height:36px;color:#EDE5D6;text-decoration:none;white-space:nowrap" style-hover="color:#D9B77A">+992 971 101 771</a>
+          <a href="https://wa.me/992971101771" target="_blank" rel="noopener" style="align-self:flex-start;font-size:16px;line-height:24px;color:#D9B77A" style-hover="color:#EDE5D6">{{ t.wa }}</a>
+        </div>
+      </div>
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-top:24px;box-shadow:inset 0 1px 0 rgba(237,229,214,0.2);font-size:14px;line-height:20px;color:#AEB9B5">
         <span style="display:flex;align-items:center;gap:12px"><span style="font-family:'Marcellus',serif;font-size:16px;letter-spacing:0.14em;color:#EDE5D6">NOOR</span><span style="letter-spacing:0.16em;font-size:12px">APART HOTEL</span></span>
-        <div style="display:flex;flex-wrap:wrap;gap:24px"><a href="#rooms" style="color:#AEB9B5">Номера</a><a href="#top" style="color:#AEB9B5">Наверх</a></div>
+        <div style="display:flex;flex-wrap:wrap;gap:24px"><a href="tel:+992971101771" style="color:#AEB9B5">+992 971 101 771</a><a href="#rooms" style="color:#AEB9B5">{{ t.navRooms }}</a><a href="#top" style="color:#AEB9B5">{{ t.toTop }}</a></div>
       </div>
     </div>
   </footer>
@@ -199,11 +213,19 @@ input,select{font:inherit}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { room: 'double', idx: 0, f: { checkin: '', checkout: '', room: 'double', phone: '' }, err: {}, sent: false, sending: false, menu: false, narrow: false, active: '', faq: 0 };
+  state = { room: 'double', idx: 0, f: { checkin: '', checkout: '', room: 'double', phone: '' }, err: {}, sent: false, sending: false, menu: false, narrow: false, active: '', faq: 0, lang: (() => { try { const q = new URLSearchParams(location.search).get('lang'); if (q === 'ru' || q === 'en') return q; const v = localStorage.getItem('noor-lang'); if (v === 'ru' || v === 'en') return v; } catch (e) {} return 'ru'; })() };
   rootRef = React.createRef();
   videoRef = React.createRef();
 
+  applyLang() {
+    const en = this.state.lang === 'en';
+    document.documentElement.lang = this.state.lang;
+    document.title = en ? 'NOOR Apart Hotel · Rooms for two' : 'NOOR Apart Hotel · Номера для двоих';
+    this.update && requestAnimationFrame(this.update);
+  }
+
   componentDidMount() {
+    this.applyLang();
     const root = this.rootRef.current; if (!root) return;
     const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches, E = 'cubic-bezier(0.22,1,0.36,1)';
     this.onResize = () => { const n = window.innerWidth < 880; if (n !== this.state.narrow) this.setState({ narrow: n, menu: false }); };
@@ -294,7 +316,7 @@ class Component extends DCLogic {
 
     let ticking = false;
     const par = root.querySelector('[data-hero-par]'), hall = root.querySelector('[data-hall]'), nav = root.querySelector('[data-nav]');
-    const update = () => {
+    const update = this.update = () => {
       ticking = false;
       const h = window.innerHeight, y = window.scrollY;
       if (!rm && par && y < h * 1.2) par.style.transform = `translate3d(0,${(y * 0.32).toFixed(1)}px,0)`;
@@ -339,6 +361,82 @@ class Component extends DCLogic {
 
   renderVals() {
     const s = this.state, E = 'cubic-bezier(0.22,1,0.36,1)';
+    const t = ({
+      ru: {
+        skip: 'Перейти к содержанию', navAria: 'Основная навигация', homeAria: 'NOOR, наверх',
+        langLabel: 'EN', langAria: 'Switch to English', menuOpen: 'Открыть меню', menuClose: 'Закрыть меню',
+        navRooms: 'Номера', navDetails: 'В номере', navHall: 'Прихожая', toTop: 'Наверх',
+        h1a: 'Свет, который', h1b: 'встречает у двери',
+        heroText: 'Тихие номера для двоих: мраморная ванная, плотные шторы и хрустальный свет над кроватью.',
+        heroCta: 'Посмотреть номера',
+        chip1: 'До 2 гостей в номере', chip2: 'Кондиционер и холодильник', chip3: 'Мраморная ванная с душевой', chip4: 'Прихожая отделяет спальню от двери',
+        whyAlt: 'Двуспальная кровать у мягкого изголовья с золотыми профилями', whyK: 'ПОЧЕМУ NOOR',
+        whyH: 'Noor значит «свет». Номера устроены так, чтобы его было много днём и мало ночью.',
+        benefits: [
+          ['Спальня в глубине номера.', 'Длинная прихожая отделяет кровать от двери и коридора, поэтому шагов за стеной не слышно.'],
+          ['Мраморная ванная.', 'Стеклянная душевая, зеркало с подсветкой и полотенцесушитель.'],
+          ['Своё хозяйство.', 'Холодильник, шкаф с раздвижными дверями, халаты и туалетный столик.'],
+          ['Прохлада и темнота.', 'Кондиционер в каждом номере, плотные шторы и тюль на окнах.']
+        ],
+        nightAria: 'О ночи в NOOR',
+        tagline: 'После дороги хочется простого: тихой спальни, свежих полотенец на кровати и мягкого света хрусталя вечером. Всё остальное мы уже приготовили.',
+        roomsK: 'НОМЕРА', roomsH: 'Два номера, один и тот же свет',
+        chapters: [
+          { num: '01', kicker: 'НОМЕР С ДВУСПАЛЬНОЙ КРОВАТЬЮ', name: 'Для двоих', text: 'Мягкое изголовье во всю стену, золотые профили и люстра из трёх хрустальных колец. Туалетный столик с зеркалом у окна.', facts: ['До 2 гостей', 'Двуспальная кровать', 'Душевая кабина', 'Кондиционер и ТВ'], hero: ['08', 'Двуспальная кровать у мягкого изголовья с золотыми профилями'], small: [['09', 'Двуспальная кровать и окно с тюлем'], ['03', 'Прихожая с туалетным столиком ведёт в спальню']] },
+          { num: '02', kicker: 'НОМЕР С ДВУМЯ КРОВАТЯМИ', name: 'Каждому своя', text: 'Две отдельные кровати у стены с деревянными панелями. Удобно коллегам в командировке, друзьям и родителям с подростком.', facts: ['До 2 гостей', 'Две односпальные', 'Душевая кабина', 'Холодильник'], hero: ['10', 'Две кровати у стены с деревянными панелями'], small: [['02', 'Две кровати под хрустальной люстрой'], ['05', 'Номер с двумя кроватями, телевизором и ковром']] }
+        ],
+        mq1: 'Тишина', mq2: 'Хрусталь', mq3: 'Мрамор', mq4: 'Свет', mq5: 'Лён', mq6: 'Золото',
+        detailsK: 'В НОМЕРЕ', detailsH: 'Всё нужное на одну ночь или на неделю',
+        details: [
+          ['Ванная с подсвеченным зеркалом и стеклянной душевой', 'Ванная со стеклянной душевой и зеркалом с подсветкой'],
+          ['Шкаф с раздвижными дверями и халатом на вешалке', 'Шкаф с раздвижными дверями и халаты'],
+          ['Мини холодильник в номере', 'Холодильник в каждом номере'],
+          ['Номер с двумя кроватями, телевизором и туалетным столиком', 'Кондиционер, телевизор и туалетный столик с зеркалом']
+        ],
+        hallAria: 'Прихожая', hallAlt: 'Длинная прихожая с ковровой дорожкой ведёт в спальню',
+        hallText: 'Тишина начинается у двери: длинная прихожая отделяет спальню от коридора.',
+        footH: 'Свет оставим включённым до вашего приезда.',
+        addrK: 'АДРЕС', addr: 'ул. Хусейнзода, 2/1', landmark: 'Ориентир: гостиница «Фирдавси»',
+        phoneK: 'ТЕЛЕФОН', wa: 'Написать в WhatsApp'
+      },
+      en: {
+        skip: 'Skip to content', navAria: 'Main navigation', homeAria: 'NOOR, back to top',
+        langLabel: 'RU', langAria: 'Переключить на русский', menuOpen: 'Open menu', menuClose: 'Close menu',
+        navRooms: 'Rooms', navDetails: 'In the room', navHall: 'Entrance hall', toTop: 'Back to top',
+        h1a: 'Light that', h1b: 'greets you at the door',
+        heroText: 'Quiet rooms for two: a marble bathroom, blackout curtains and crystal light above the bed.',
+        heroCta: 'View rooms',
+        chip1: 'Up to 2 guests per room', chip2: 'Air conditioning and fridge', chip3: 'Marble bathroom with shower', chip4: 'An entrance hall separates the bedroom from the door',
+        whyAlt: 'Double bed with a soft headboard and gold trim', whyK: 'WHY NOOR',
+        whyH: 'Noor means “light”. Our rooms are designed to let plenty in by day and keep it out at night.',
+        benefits: [
+          ['The bedroom is set deep inside.', 'A long entrance hall separates the bed from the door and corridor, so you won’t hear footsteps outside.'],
+          ['Marble bathroom.', 'Glass shower, illuminated mirror and heated towel rail.'],
+          ['Everything at hand.', 'Fridge, wardrobe with sliding doors, bathrobes and a dressing table.'],
+          ['Cool and dark.', 'Air conditioning in every room, blackout curtains and sheer drapes on the windows.']
+        ],
+        nightAria: 'Nights at NOOR',
+        tagline: 'After a long journey you want simple things: a quiet bedroom, fresh towels on the bed and the soft glow of crystal in the evening. We have taken care of everything else.',
+        roomsK: 'ROOMS', roomsH: 'Two rooms, the same light',
+        chapters: [
+          { num: '01', kicker: 'DOUBLE ROOM', name: 'For two', text: 'A soft headboard spanning the wall, gold trim and a chandelier of three crystal rings. A dressing table with a mirror by the window.', facts: ['Up to 2 guests', 'Double bed', 'Shower', 'Air conditioning and TV'], hero: ['08', 'Double bed with a soft headboard and gold trim'], small: [['09', 'Double bed and a window with sheer curtains'], ['03', 'Entrance hall with a dressing table leading to the bedroom']] },
+          { num: '02', kicker: 'TWIN ROOM', name: 'A bed each', text: 'Two separate beds against a wood-panelled wall. Ideal for colleagues on a business trip, friends, or a parent with a teenager.', facts: ['Up to 2 guests', 'Two single beds', 'Shower', 'Fridge'], hero: ['10', 'Two beds against a wood-panelled wall'], small: [['02', 'Two beds under a crystal chandelier'], ['05', 'Twin room with a TV and a rug']] }
+        ],
+        mq1: 'Silence', mq2: 'Crystal', mq3: 'Marble', mq4: 'Light', mq5: 'Linen', mq6: 'Gold',
+        detailsK: 'IN THE ROOM', detailsH: 'Everything you need for a night or a week',
+        details: [
+          ['Bathroom with an illuminated mirror and a glass shower', 'Bathroom with a glass shower and an illuminated mirror'],
+          ['Wardrobe with sliding doors and a bathrobe on a hanger', 'Wardrobe with sliding doors and bathrobes'],
+          ['Mini fridge in the room', 'A fridge in every room'],
+          ['Twin room with a TV and a dressing table', 'Air conditioning, TV and a dressing table with a mirror']
+        ],
+        hallAria: 'Entrance hall', hallAlt: 'A long hallway with a carpet runner leads to the bedroom',
+        hallText: 'Quiet begins at the door: a long entrance hall separates the bedroom from the corridor.',
+        footH: 'We’ll leave the light on until you arrive.',
+        addrK: 'ADDRESS', addr: '2/1 Huseynzoda St.', landmark: 'Landmark: Firdavsi Hotel',
+        phoneK: 'PHONE', wa: 'Message us on WhatsApp'
+      }
+    })[s.lang];
     const ROOMS = {
       double: { label: 'Одна кровать', name: 'Номер с двуспальной кроватью',
         text: 'Мягкое изголовье во всю стену, золотые профили и люстра из трёх хрустальных колец. Туалетный столик с зеркалом у окна.',
@@ -360,7 +458,7 @@ class Component extends DCLogic {
       style: { padding: 0, border: 'none', cursor: 'pointer', aspectRatio: '1', borderRadius: 12, overflow: 'hidden', background: '#EDE5D6', boxShadow: i === s.idx ? '0 0 0 2px #FFFFFF, 0 0 0 3px #17302F' : 'none', opacity: i === s.idx ? 1 : 0.64, transition: `opacity 300ms ${E}, box-shadow 300ms ${E}` } }));
     const n = r.photos.length;
 
-    const navItems = [['#rooms', 'Номера', 'rooms'], ['#details', 'В номере', 'details'], ['#hall', 'Прихожая', 'hall']];
+    const navItems = [['#rooms', t.navRooms, 'rooms'], ['#details', t.navDetails, 'details'], ['#hall', t.navHall, 'hall']];
     const navLinks = navItems.map(([href, label, id]) => { const cur = s.active === id;
       return { href, label, current: cur ? 'true' : undefined, style: { padding: '8px 12px', borderRadius: 999, fontSize: 14, lineHeight: '20px', fontWeight: 500, textDecoration: 'none', whiteSpace: 'nowrap', color: '#17302F', background: cur ? 'rgba(23,48,47,0.08)' : 'transparent', transition: `background-color 300ms ${E}` } }; });
     const m = s.menu;
@@ -369,18 +467,8 @@ class Component extends DCLogic {
       opacity: m ? 1 : 0, transform: m ? 'none' : 'translateY(24px)', transition: `opacity 500ms ${E} ${m ? Math.min(i * 60, 400) : 0}ms, transform 500ms ${E} ${m ? Math.min(i * 60, 400) : 0}ms` } }));
     const bar = { position: 'absolute', left: 11, width: 18, height: 2, borderRadius: 2, background: '#17302F', transition: `transform 500ms ${E}` };
 
-    const benefits = [
-      ['Спальня в глубине номера.', 'Длинная прихожая отделяет кровать от двери и коридора, поэтому шагов за стеной не слышно.'],
-      ['Мраморная ванная.', 'Стеклянная душевая, зеркало с подсветкой и полотенцесушитель.'],
-      ['Своё хозяйство.', 'Холодильник, шкаф с раздвижными дверями, халаты и туалетный столик.'],
-      ['Прохлада и темнота.', 'Кондиционер в каждом номере, плотные шторы и тюль на окнах.']
-    ].map(([title, text], i) => ({ n: `0${i + 1}`, title, text, delay: i * 90 }));
-    const details = [
-      ['ai/04', 'Ванная с подсвеченным зеркалом и стеклянной душевой', 'Ванная со стеклянной душевой и зеркалом с подсветкой', '3/4'],
-      ['ai/06', 'Шкаф с раздвижными дверями и халатом на вешалке', 'Шкаф с раздвижными дверями и халаты', '3/4'],
-      ['IMG_4108', 'Мини холодильник в номере', 'Холодильник в каждом номере', '3/4'],
-      ['ai/05', 'Номер с двумя кроватями, телевизором и туалетным столиком', 'Кондиционер, телевизор и туалетный столик с зеркалом', '16/9']
-    ].map(([f, alt, cap, ar], i) => ({ src: `assets/photos/${f}${f.startsWith('ai/') ? '.png' : '.jpg'}`, alt, cap, delay: (i % 3) * 90,
+    const benefits = t.benefits.map(([title, text], i) => ({ n: `0${i + 1}`, title, text, delay: i * 90 }));
+    const details = [['ai/04', '3/4'], ['ai/06', '3/4'], ['IMG_4108', '3/4'], ['ai/05', '16/9']].map(([f, ar], i) => [f, ...t.details[i], ar]).map(([f, alt, cap, ar], i) => ({ src: `assets/photos/${f}${f.startsWith('ai/') ? '.png' : '.jpg'}`, alt, cap, delay: (i % 3) * 90,
       fig: { margin: 0, display: 'flex', flexDirection: 'column', gap: 12, gridColumn: ar === '16/9' ? '1 / -1' : 'auto' },
       img: { width: '100%', aspectRatio: ar, objectFit: 'cover', objectPosition: 'center 60%', display: 'block', transition: `transform 700ms ${E}` } }));
     const steps = [
@@ -417,7 +505,8 @@ class Component extends DCLogic {
     return {
       rootRef: this.rootRef, videoRef: this.videoRef,
       wide: !s.narrow, narrow: s.narrow, navLinks, menuLinks, menuOpen: m ? 'true' : 'false', menuHidden: m ? 'false' : 'true',
-      menuLabel: m ? 'Закрыть меню' : 'Открыть меню',
+      menuLabel: m ? t.menuClose : t.menuOpen,
+      t, toggleLang: () => { const lang = s.lang === 'en' ? 'ru' : 'en'; try { localStorage.setItem('noor-lang', lang); } catch (e) {} this.setState({ lang, menu: false }, () => this.applyLang()); },
       toggleMenu: () => this.setState({ menu: !m }), closeMenu: () => this.setState({ menu: false }),
       burgerTop: { ...bar, top: 15, transform: m ? 'translateY(4px) rotate(45deg)' : 'none' },
       burgerBottom: { ...bar, top: 23, transform: m ? 'translateY(-4px) rotate(-45deg)' : 'none' },
@@ -425,11 +514,8 @@ class Component extends DCLogic {
         background: 'rgba(247,243,234,0.94)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', opacity: m ? 1 : 0, pointerEvents: m ? 'auto' : 'none', visibility: m ? 'visible' : 'hidden',
         transition: `opacity 500ms ${E}, visibility 0ms linear ${m ? 0 : 500}ms` },
       benefits,
-      taglineWords: 'После дороги хочется простого: тихой спальни, свежих полотенец на кровати и мягкого света хрусталя вечером. Всё остальное мы уже приготовили.'.split(' '),
-      chapters: [
-        { num: '01', kicker: 'НОМЕР С ДВУСПАЛЬНОЙ КРОВАТЬЮ', name: 'Для двоих', text: 'Мягкое изголовье во всю стену, золотые профили и люстра из трёх хрустальных колец. Туалетный столик с зеркалом у окна.', facts: ['До 2 гостей', 'Двуспальная кровать', 'Душевая кабина', 'Кондиционер и ТВ'], hero: ['08', 'Двуспальная кровать у мягкого изголовья с золотыми профилями'], small: [['09', 'Двуспальная кровать и окно с тюлем'], ['03', 'Прихожая с туалетным столиком ведёт в спальню']] },
-        { num: '02', kicker: 'НОМЕР С ДВУМЯ КРОВАТЯМИ', name: 'Каждому своя', text: 'Две отдельные кровати у стены с деревянными панелями. Удобно коллегам в командировке, друзьям и родителям с подростком.', facts: ['До 2 гостей', 'Две односпальные', 'Душевая кабина', 'Холодильник'], hero: ['10', 'Две кровати у стены с деревянными панелями'], small: [['02', 'Две кровати под хрустальной люстрой'], ['05', 'Номер с двумя кроватями, телевизором и ковром']] }
-      ].map((c, i) => ({ ...c, hero: { src: 'assets/photos/ai/' + c.hero[0] + '.png', alt: c.hero[1] },
+      taglineWords: t.tagline.split(' '),
+      chapters: t.chapters.map((c, i) => ({ ...c, hero: { src: 'assets/photos/ai/' + c.hero[0] + '.png', alt: c.hero[1] },
         small: c.small.map(([f, alt], j) => ({ src: 'assets/photos/ai/' + f + '.png', alt, speed: j ? '0.1' : '0.04', fig: { margin: 0, marginTop: j ? 96 : 0 } })),
         wrap: { display: 'flex', flexWrap: 'wrap', gap: '48px 80px', alignItems: 'flex-start', flexDirection: i ? 'row-reverse' : 'row' },
         numStyle: { position: 'absolute', zIndex: 1, top: -56, [i ? 'right' : 'left']: -8, fontFamily: "'Forum',serif", fontSize: 128, lineHeight: 1, color: '#B9893F', pointerEvents: 'none' } })),
